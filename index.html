@@ -3,88 +3,13 @@
 <head>
 	<meta charset="utf-8">
 	<title>萌卡的收款主页 - 萌爱心</title>
-	<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap-ie7.css">
-	<script type="text/javascript" src="./bootstrap/js/jquery.js"></script>
-	<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+    <!--[if lt IE 8]>
+    <link href="css/bootstrap-ie7.css" rel="stylesheet">
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style type="text/css">
-		body {
-			font-family: "Microsoft Yahei","SimHei",sans-serif;
-			background: #FFF7F7;
-		}
-
-		.container {
-			width: 70%;
-			box-shadow: 0 0 10px 3px #CCC;
-			background: #FFF;
-		}
-
-		.headline {
-			border-bottom: 1px #E6E6E6 solid;
-			padding: 20px 0;
-		}
-
-		.site-text p {
-			text-indent: 28px;
-			border-left: 1px solid #EEE;
-		}
-
-		.site-logo img {
-			margin-left: 0 auto;
-			width: 100%;
-		}
-
-		.text-introduction, .pay{
-			display: table;
-			border-bottom: 1px #E6E6E6 solid;
-			padding: 20px 0;
-		}
-
-		.form-group {
-			padding: 5px 0;
-		}
-
-		.pay-group {
-			border-bottom: 1px #E6E6E6 solid;
-			padding: 20px 0;
-		}
-
-		.pay-group img {
-			height: 50px;
-			border: 3px solid #FFF;
-		}
-
-		.pay-group > img.selected {
-			border: 3px solid #F09900;
-		}
-
-		.pay-form {
-			padding-top: 20px;
-		}
-
-		.qr-code > img {
-			margin: 10px;
-			width: 100%;
-		}
-
-		.inline {
-			display: inline-block;
-			width: auto;
-		}
-
-		.footer {
-			padding: 20px;
-			text-align: center;
-		}
-
-		@media (max-width: 992px) { 
-			.container {
-				width: 100%;
-			}
-		}
-	</style>
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -106,41 +31,41 @@
 		<div class="col-md-8">
 			<div class="pay-group">
 				<label>付款方式：</label>
-				<img class="selected" src="./images/0.png">
-				<img src="./images/42.png">
-				<img src="./images/30.png">
+				<img class="selected" src="img/0.png">
+				<img src="img/42.png">
+				<img src="img/30.png">
 			</div>
 			<div class="pay-form">
-				<form action="" class="form-inline">
+				<form action="" class="form-horizontal">
 					<div class="form-group">
 						<label>收款账户：</label><strong>朱恒(zh9***@gmail.com)</strong>
 					</div>
 					<div class="form-group">
 						<label>付款金额：</label>
-						<div class="btn-group">
-							<button class="btn btn-default btn-sm dropdown-toggle" 
-							type="button" data-toggle="dropdown">人民币
-							<span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							    <li><a href="#">人民币</a></li>
-							    <li><a href="#">日元</a></li>
-							    <li><a href="#">美元</a></li>
-							</ul>
-						</div>
-						<input type="text" class="form-control inline" placeholder=""> 元
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">人民币 <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">人民币</a></li>
+                                    <li><a href="#">美元</a></li>
+                                </ul>
+                            </div><!-- /btn-group -->
+                            <input type="text" class="form-control">
+                            <span class="input-group-addon">元</span>
+                        </div><!-- /input-group -->
 					</div>
 					<div class="form-group">
 						<label class="control-label">付款留言：</label>
 						<input type="text" class="form-control inline" placeholder="有什么想说的么">
-						<button type="submit" class="btn btn-warning">&nbsp;&nbsp;确认付款&nbsp;&nbsp;</button>
 					</div>
-					<div><p>总而言之一定要好好确定对方的身份呢。如果出了差错..=v=</p></div>
+                    <button type="submit" class="btn btn-warning">&nbsp;&nbsp;确认付款&nbsp;&nbsp;</button>
 				</form>
+
+                <!--<div><p>总而言之一定要好好确定对方的身份呢。如果出了差错..=v=</p></div>-->
 	  		</div>
 		</div>
 		<div class="qr-code col-md-4">
-			<img class="img-thumbnail" src="./images/ap2vghtyurv0kj0u62.png">
+			<img class="img-thumbnail" src="img/ap2vghtyurv0kj0u62.png">
 		</div>
 	</div>
 	<div class="footer">
@@ -148,4 +73,6 @@
 	</div>
 </div>
 </body>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </html>
