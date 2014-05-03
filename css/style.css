@@ -16,15 +16,21 @@ body {
 
 .site-text p {
     text-indent: 28px;
-    border-left: 1px solid #EEE;
+}
+
+.site-logo {
+    text-align: center;
 }
 
 .site-logo img {
     margin-left: 0;
     width: 100%;
+    max-width: 300px;
+    margin: auto;
 }
 
-.text-introduction, .pay{
+.text-introduction, .pay {
+    width: 100%;
     display: table;
     border-bottom: 1px #E6E6E6 solid;
     padding: 20px 0;
@@ -53,9 +59,14 @@ body {
     margin-right: 0;
 }
 
-.qr-code > img {
-    margin: 10px;
+.qr-code {
+    text-align: center;
+}
+
+.qr-code img {
+    margin: 10px auto;
     width: 100%;
+    max-width: 300px;
 }
 
 .inline {
@@ -72,4 +83,6 @@ body {
     .container {
         width: 100%;
     }
+
+
 }
