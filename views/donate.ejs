@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>萌卡的收款主页 - 萌爱心</title>
+    <title><%= entity.org %>的收款主页 - 萌爱心</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
     <!--[if lt IE 8]>
@@ -17,14 +17,14 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="headline">萌卡的收款主页<small> | 萌爱心</small></h1>
+    <h1 class="headline"><%= entity.org %>的收款主页<small> | 萌爱心</small></h1>
     <div class="text-introduction">
         <div class="site-logo col-md-3">
-            <img class="img-thumbnail" src="http://my-card.in/logo.png">
+            <img class="img-thumbnail" src="<%= entity.logo_url %>">
         </div>
         <div class="site-text col-md-9">
-            <h3>如果您喜欢萌卡：</h3>
-            <p>这里是萌卡的捐助页面，您的捐助将用于萌卡服务器开支。付款时请留下你的萌卡用户名。然后呢这是一些测试的文字。大家请忽略掉它。如果非要看的话那就看吧。</p>
+            <h3>如果您喜欢<%= entity.org %>：</h3>
+            <p><%= entity.intro %></p>
         </div>
     </div>
     <div class="pay">
@@ -36,10 +36,10 @@
                 <img src="img/30.png">
             </div>
             <div class="pay-form">
-                <!--
+                <% if (mode === 'api') { %>
                 <form action="" class="form-horizontal">
                     <div class="form-group">
-                        <label>收款账户：</label><strong>朱恒(zh9***@gmail.com)</strong>
+                        <label>收款账户：</label><strong><%= entity.payment[0].alipay %></strong>
                     </div>
                     <div class="form-group">
                         <label>付款金额：</label>
@@ -61,10 +61,10 @@
                     </div>
                     <button type="submit" class="btn btn-warning">&nbsp;&nbsp;确认付款&nbsp;&nbsp;</button>
                 </form>
-                -->
-
+                <% } else if (mode === 'link') { %>
                 <div><p>总而言之一定要好好确定对方的身份呢。如果出了差错..=v=</p></div>
-                <button type="submit" class="btn btn-warning">&nbsp;&nbsp;确认赞助&nbsp;&nbsp;</button>
+                <a class="btn btn-warning" href="https://shenghuo.alipay.com/send/payment/fill.htm?optEmail=<%= entity.payments[0].alipay %>">&nbsp;&nbsp;戳这里去付款喵~&nbsp;&nbsp;</a>
+                <% } %>
             </div>
         </div>
         <div class="qr-code col-md-4">

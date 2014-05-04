@@ -1,0 +1,86 @@
+#!/usr/bin/env node
+var config = require('../config');
+var prompt = require('prompt');
+var MongoClient = require('mongodb').MongoClient;
+
+
+var schema = {
+    properties: {
+        name: {
+            description: 'Entity name',
+            type: 'string',
+            required: true
+        },
+        url: {
+            description: 'Entity url',
+            type: 'string',
+            pattern: /^[a-z0-9_-]+$/,
+            message: 'URL must be alphanumerical and/or hyphen/underscore.',
+            required: true
+        },
+        logo_url: {
+            description: 'Entity logo',
+            type: 'string',
+            pattern: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/,
+            required: true
+        },
+        intro: {
+            description: 'Introduction',
+            type: 'string',
+            required: true
+        },
+        alipay: {
+            description: 'Alipay account',
+            type: 'string',
+            message: 'Alipay account is Email or Phone number.',
+            required: true
+        }
+
+    }
+};
+
+//
+// Start the prompt
+//
+prompt.start();
+
+//
+// Get two properties from the user: email, password
+//
+prompt.get(schema, function (err, result) {
+    console.log('Information collected. Saving to database...');
+    // console.log(result);
+
+
+    MongoClient.connect(config.mongodb, { db: { native_parser: true, w : 1 } }, function(err, db) {
+        if (err) {
+            throw err;
+        }
+
+        var collection = db.collection('entity');
+
+        collection.insert({
+            org: result.name,
+            url: result.url,
+            logo_url: result.logo_url,
+            intro: result.intro,
+            payments: [
+                { alipay: result.alipay }
+            ]
+        }, {
+            safe: true
+        }, function(err) {
+            if (err) {
+                throw err;
+            }
+            collection.ensureIndex({
+                url: 1
+            }, function(err) {
+                if (err) {
+                    throw err;
+                }
+                console.log('Operation completed successfully.');
+            });
+        });
+    });
+});
