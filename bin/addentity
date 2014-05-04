@@ -86,7 +86,7 @@ prompt.get(schema, function (err, result) {
                             throw err;
                         }
                         console.log('Operation completed successfully.');
-                        exit(0);
+                        process.exit(0);
                     });
                 });
             }
