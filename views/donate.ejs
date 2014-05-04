@@ -32,14 +32,16 @@
             <div class="pay-group">
                 <label>付款方式：</label>
                 <img class="selected" src="img/0.png">
+                <!-- <img src="img/30.png"> -->
+                <% if(entity.payments.paypal) { %>
                 <img src="img/42.png">
-                <img src="img/30.png">
+                <% } %>
             </div>
             <div class="pay-form">
                 <% if (mode === 'api') { %>
                 <form action="" class="form-horizontal">
                     <div class="form-group">
-                        <label>收款账户：</label><strong><%= entity.payment[0].alipay %></strong>
+                        <label>收款账户：</label><strong><%= entity.payment.alipay_account %></strong>
                     </div>
                     <div class="form-group">
                         <label>付款金额：</label>
@@ -63,13 +65,15 @@
                 </form>
                 <% } else if (mode === 'link') { %>
                 <div><p>总而言之一定要好好确定对方的身份呢。如果出了差错..=v=</p></div>
-                <a class="btn btn-warning" href="https://shenghuo.alipay.com/send/payment/fill.htm?optEmail=<%= entity.payments[0].alipay %>">&nbsp;&nbsp;戳这里去付款喵~&nbsp;&nbsp;</a>
+                <a class="btn btn-warning" href="https://shenghuo.alipay.com/send/payment/fill.htm?optEmail=<%= entity.payments.alipay_account %>">&nbsp;&nbsp;戳这里去付款喵~&nbsp;&nbsp;</a>
                 <% } %>
             </div>
         </div>
+        <% if (entity.payments.alipay_qrcode) { %>
         <div class="qr-code col-md-4">
-            <img class="img-thumbnail" src="img/ap2vghtyurv0kj0u62.png">
+            <img class="img-thumbnail" src="<%= entity.payments.alipay_qrcode %>">
         </div>
+        <% } %>
     </div>
     <div class="footer">
         <small>炒鸡厉害呢 | 萌爱心 | 女装赛高</small>

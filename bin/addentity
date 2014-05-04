@@ -29,13 +29,22 @@ var schema = {
             type: 'string',
             required: true
         },
-        alipay: {
+        alipay_account: {
             description: 'Alipay account',
             type: 'string',
             message: 'Alipay account is Email or Phone number.',
             required: true
+        },
+        alipay_qrcode: {
+            description: '(Optional) Alipay QR code url',
+            type: 'string'
+            // pattern: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+        },
+        paypal: {
+            description: '(Optional) Paypal account',
+            type: 'string',
+            message: 'Paypal account is Email.'
         }
-
     }
 };
 
@@ -70,9 +79,11 @@ prompt.get(schema, function (err, result) {
                     url: result.url,
                     logo_url: result.logo_url,
                     intro: result.intro,
-                    payments: [
-                        { alipay: result.alipay }
-                    ]
+                    payments: {
+                        alipay_account: result.alipay_account,
+                        alipay_qrcode: result.alipay_qrcode || '',
+                        paypal: result.paypal || '',
+                    }
                 }, {
                     safe: true
                 }, function(err) {
