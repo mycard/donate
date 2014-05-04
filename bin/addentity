@@ -59,28 +59,37 @@ prompt.get(schema, function (err, result) {
 
         var collection = db.collection('entity');
 
-        collection.insert({
-            org: result.name,
-            url: result.url,
-            logo_url: result.logo_url,
-            intro: result.intro,
-            payments: [
-                { alipay: result.alipay }
-            ]
-        }, {
-            safe: true
-        }, function(err) {
-            if (err) {
-                throw err;
+        collection.findOne({
+            url: result.url
+        }, function(err, doc) {
+            if (doc) {
+                throw result.url + ' already exists.';
+            } else {
+                collection.insert({
+                    org: result.name,
+                    url: result.url,
+                    logo_url: result.logo_url,
+                    intro: result.intro,
+                    payments: [
+                        { alipay: result.alipay }
+                    ]
+                }, {
+                    safe: true
+                }, function(err) {
+                    if (err) {
+                        throw err;
+                    }
+                    collection.ensureIndex({
+                        url: 1
+                    }, function(err) {
+                        if (err) {
+                            throw err;
+                        }
+                        console.log('Operation completed successfully.');
+                        exit(0);
+                    });
+                });
             }
-            collection.ensureIndex({
-                url: 1
-            }, function(err) {
-                if (err) {
-                    throw err;
-                }
-                console.log('Operation completed successfully.');
-            });
         });
     });
 });
