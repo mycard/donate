@@ -1,0 +1,88 @@
+body {
+    font-family: "Microsoft Yahei","SimHei",sans-serif;
+    background: #FFF7F7;
+}
+
+.container {
+    width: 70%;
+    box-shadow: 0 0 10px 3px #CCC;
+    background: #FFF;
+}
+
+.headline {
+    border-bottom: 1px #E6E6E6 solid;
+    padding: 20px 0;
+}
+
+.site-text p {
+    text-indent: 28px;
+}
+
+.site-logo {
+    text-align: center;
+}
+
+.site-logo img {
+    margin-left: 0;
+    width: 100%;
+    max-width: 300px;
+    margin: auto;
+}
+
+.text-introduction, .pay {
+    width: 100%;
+    display: table;
+    border-bottom: 1px #E6E6E6 solid;
+    padding: 20px 0;
+}
+
+.pay-group {
+    border-bottom: 1px #E6E6E6 solid;
+    padding: 20px 0;
+}
+
+.pay-group img {
+    height: 50px;
+    border: 3px solid #FFF;
+}
+
+.pay-group > img.selected {
+    border: 3px solid #F09900;
+}
+
+.pay-form {
+    padding-top: 20px;
+}
+
+.pay-form .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.qr-code {
+    text-align: center;
+}
+
+.qr-code img {
+    margin: 10px auto;
+    width: 100%;
+    max-width: 300px;
+}
+
+.inline {
+    display: inline-block;
+    width: auto;
+}
+
+.footer {
+    padding: 20px;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .container {
+        width: 100%;
+    }
+
+
+}
