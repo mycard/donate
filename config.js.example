@@ -1,0 +1,12 @@
+module.exports = {
+    // HTTP server settings
+    bindAddress: '127.0.0.1',
+    bindPort: '3000',
+
+    // database
+    mongodb: 'mongodb://127.0.0.1:27017/donate',
+
+    // working mode: link or api. currently only link mode works.
+    mode: 'link'
+
+};
