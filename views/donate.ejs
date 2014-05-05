@@ -23,7 +23,7 @@
             <img class="img-thumbnail" src="<%= entity.logo_url %>">
         </div>
         <div class="site-text col-md-9">
-            <h3>如果您喜欢<%= entity.org %>：</h3>
+            <h3>这里是 <%= entity.org %> 的捐款页面：</h3>
             <p><%= entity.intro %></p>
         </div>
     </div>
@@ -38,11 +38,11 @@
                 <% } %>
             </div>
             <div class="pay-form">
+                <div>
+                    <label>收款账户：</label><strong><%= entity.payments.alipay_account %></strong>
+                </div>
                 <% if (mode === 'api') { %>
                 <form action="" class="form-horizontal">
-                    <div class="form-group">
-                        <label>收款账户：</label><strong><%= entity.payments.alipay_account %></strong>
-                    </div>
                     <div class="form-group">
                         <label>付款金额：</label>
                         <div class="input-group">
@@ -64,8 +64,9 @@
                     <button type="submit" class="btn btn-warning">&nbsp;&nbsp;确认付款&nbsp;&nbsp;</button>
                 </form>
                 <% } else if (mode === 'link') { %>
-                <div><p>总而言之一定要好好确定对方的身份呢。如果出了差错..=v=</p></div>
-                <a class="btn btn-warning" href="https://shenghuo.alipay.com/send/payment/fill.htm?optEmail=<%= entity.payments.alipay_account %>">&nbsp;&nbsp;戳这里去付款喵~&nbsp;&nbsp;</a>
+                <!-- 临时放一下样式 by zh -->
+                <a style="margin-top: 16px;" rel="noreferrer" target="_blank" class="btn btn-warning" href="http://shenghuo.alipay.com/send/payment/fill.htm?optEmail=<%= entity.payments.alipay_account %>">&nbsp;&nbsp;点击进入支付宝&nbsp;&nbsp;</a>
+                <div style="margin-top: 50px;"><p>如果您的手机装有 <a href="http://mobile.alipay.com/">支付宝钱包</a> ，也可以直接扫描右侧二维码 </p></div>
                 <% } %>
             </div>
         </div>
