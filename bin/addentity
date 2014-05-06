@@ -44,6 +44,21 @@ var schema = {
             description: '(Optional) Paypal account',
             type: 'string',
             message: 'Paypal account is Email.'
+        },
+        unionpay_id: {
+            description: '(Optional) Unionpay Card ID',
+            type: 'string',
+            message: ''
+        },
+        unionpay_bank: {
+            description: '(Optional) Unionpay Card Bank',
+            type: 'string',
+            message: ''
+        },
+        unionpay_name: {
+            description: '(Optional) Unionpay Card Name',
+            type: 'string',
+            message: ''
         }
     }
 };
@@ -83,6 +98,11 @@ prompt.get(schema, function (err, result) {
                         alipay_account: result.alipay_account,
                         alipay_qrcode: result.alipay_qrcode || '',
                         paypal: result.paypal || '',
+                        unionpay: {
+                            id: result.unionpay_id,
+                            bank: result.unionpay_bank,
+                            name: result.unionpay_name
+                        } || ''
                     }
                 }, {
                     safe: true

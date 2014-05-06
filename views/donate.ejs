@@ -32,8 +32,10 @@
             <div class="pay-group">
                 <label>付款方式：</label>
                 <img class="selected" src="img/0.png">
-                <!-- <img src="img/30.png"> -->
-                <% if(entity.payments.paypal) { %>
+                <% if (entity.payments.unionpay.id) { %>
+                <img src="img/30.png">
+                <% } %>
+                <% if (entity.payments.paypal) { %>
                 <img src="img/42.png">
                 <% } %>
             </div>
@@ -68,6 +70,8 @@
                 <a style="margin-top: 16px;" rel="noreferrer" target="_blank" class="btn btn-warning" href="http://shenghuo.alipay.com/send/payment/fill.htm?optEmail=<%= entity.payments.alipay_account %>">&nbsp;&nbsp;点击进入支付宝&nbsp;&nbsp;</a>
                 <div style="margin-top: 50px;"><p>如果您的手机装有 <a href="http://mobile.alipay.com/">支付宝钱包</a> ，也可以直接扫描右侧二维码 </p></div>
                 <% } %>
+                <% /* 這裏放銀聯的信息。需要在點擊銀聯付款方式的時候顯示該內容。
+                對應的變量是 'entity.payments.unionpay.id', 'entity.payments.unionpay.bank', 'entity.payments.unionpay.name' */ %>
             </div>
         </div>
         <% if (entity.payments.alipay_qrcode) { %>
